@@ -28,10 +28,10 @@ static inline int port_init(uint16_t port, struct rte_mempool* mbuf_pool) {
 		return retval;
 	}
 
-	/* check if fast offload is supported, if so then set the fast offload bit to 1 */
-	if (dev_info.tx_offload_capa & RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE) {
-		port_conf.txmode.offloads |= RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE;
-	}
+	/* /1* check if fast offload is supported, if so then set the fast offload bit to 1 *1/ */
+	/* if (dev_info.tx_offload_capa & RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE) { */
+	/* 	port_conf.txmode.offloads |= RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE; */
+	/* } */
 
 	/* set RX and TX ring number to port configuration */
 	const uint16_t rx_rings = 1;
@@ -71,6 +71,13 @@ static inline int port_init(uint16_t port, struct rte_mempool* mbuf_pool) {
 		}
 	}
 
+	/* RX promiscuous */
+	retval = rte_eth_promiscuous_enable(port);
+	if (retval != 0) {
+		return retval;
+	}
+	
+
 	/* start the port */
 	retval = rte_eth_dev_start(port);
 	if (retval < 0) {
@@ -88,11 +95,6 @@ static inline int port_init(uint16_t port, struct rte_mempool* mbuf_pool) {
 			   " %02" PRIx8 " %02" PRIx8 " %02" PRIx8 "\n",
 			port, RTE_ETHER_ADDR_BYTES(&addr));
 
-	/* RX promiscuous */
-	retval = rte_eth_promiscuous_enable(port);
-	if (retval != 0) {
-		return retval;
-	}
-	
+
 	return 0;
 }

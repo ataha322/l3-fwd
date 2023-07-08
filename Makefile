@@ -2,7 +2,7 @@
 # Copyright(c) 2010-2014 Intel Corporation
 
 # binary name
-APP = l1fwd
+APP = l3fwd
 
 # all source are stored in SRCS-y
 SRCS-y := main.c port.c lcore.c

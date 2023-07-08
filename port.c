@@ -4,11 +4,13 @@
 #include <rte_ethdev.h>
 #include <rte_mbuf.h>
 
+#include "lcore.c"
+
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
 
 
-static inline int port_init(uint16_t port, struct rte_mempool* mbuf_pool) {
+static inline int port_init(uint16_t port, struct rte_mempool* mbuf_pool, struct routing_table* r_tab) {
 	int retval; //debug variable
 	uint16_t i; //iterator
 	

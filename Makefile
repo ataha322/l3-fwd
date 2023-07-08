@@ -5,7 +5,7 @@
 APP = l3fwd
 
 # all source are stored in SRCS-y
-SRCS-y := main.c port.c lcore.c
+SRCS-y := main.c port.c lcore.c helpers.c
 
 PKGCONF ?= pkg-config
 

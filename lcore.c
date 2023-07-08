@@ -44,7 +44,7 @@ static int resolve_forwarding(struct rte_mbuf* mbuf, struct routing_table* r_tab
 	}
 
 
-	//if no match - use last entry in RT as a default gateway
+	//if no match - use last entry in RT as default gateway
 	if (!found) {
 		int last_valid = -1;
 		for (i = 0; i < RT_SIZE; i++) {

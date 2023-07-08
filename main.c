@@ -21,9 +21,6 @@ void init_table();
 struct routing_table r_tab[RT_SIZE];
 
 
-
-
-
 int main(int argc, char** argv) {
 
 	/* initialize EAL */
@@ -62,15 +59,6 @@ int main(int argc, char** argv) {
 	
 	return 0;
 }
-
-
-
-
-
-
-
-
-
 
 
 
